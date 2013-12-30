@@ -13,7 +13,7 @@ class SendspaceMessageStrategy extends AbstractMessageStrategy
         try {
             // Find link to download page
             $matches = array();
-            $matched = preg_match('|(http://www.sendspace.com/file/.+)|', $this->getMessage()->text, $matches);
+            $matched = preg_match_all('|(http://www.sendspace.com/file/.+)|', $this->getMessage()->text, $matches);
             if (!$matched) {
                 throw new \RuntimeException(
                     sprintf(
@@ -25,15 +25,19 @@ class SendspaceMessageStrategy extends AbstractMessageStrategy
 
             // Get file download url from download page
             $client = new Client();
-            $crawler = $client->request('GET', $matches[0]);
-            $attributes = $crawler->filter('a#download_button')->extract(array('_text', 'href'));
-            if (count($attributes) > 0) {
+            $urls = array();
+            foreach ($matches[0] as $url) {
+                $crawler = $client->request('GET', $url);
+                $attributes = $crawler->filter('a#download_button')->extract(array('_text', 'href'));
+                $urls[] = $attributes[0][1];
+            }
+            if (count($urls) > 0) {
                 $event = new MessageEvent(
                     $this->getMessage(),
                     array(
-                        'service' => 'sendspace.com',
-                        'urlDownloadPage' => $matches[0],
-                        'urlFile' => $attributes[0][1]
+                        'service'          => 'sendspace.com',
+                        'urlsDownloadPage' => $matches[0],
+                        'urlsDownloadFile' => $urls
                     )
                 );
                 $this->getEventDispatcher()->dispatch(AbstractMessageStrategy::EVENT_SUCCESS, $event);
