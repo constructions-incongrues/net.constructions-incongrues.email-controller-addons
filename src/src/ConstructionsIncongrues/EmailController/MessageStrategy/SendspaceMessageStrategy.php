@@ -2,8 +2,8 @@
 namespace ConstructionsIncongrues\EmailController\MessageStrategy;
 
 use AramisAuto\EmailController\Event\ErrorEvent;
-use AramisAuto\EmailController\Event\MessageEvent;
 use AramisAuto\EmailController\MessageStrategy\AbstractMessageStrategy;
+use ConstructionsIncongrues\EmailController\Event\FileHostingServiceEvent;
 use Goutte\Client;
 
 class SendspaceMessageStrategy extends AbstractMessageStrategy
@@ -32,19 +32,17 @@ class SendspaceMessageStrategy extends AbstractMessageStrategy
                 $urls[] = $attributes[0][1];
             }
             if (count($urls) > 0) {
-                $event = new MessageEvent(
-                    $this->getMessage(),
-                    array(
-                        'service'          => 'sendspace.com',
-                        'urlsDownloadPage' => $matches[0],
-                        'urlsDownloadFile' => $urls
+                $this->getEventDispatcher()->dispatch(
+                    AbstractMessageStrategy::EVENT_SUCCESS,
+                    new FileHostingServiceEvent(
+                        $this->getMessage(),
+                        array('service' => 'sendspace.com', 'urls' => $urls)
                     )
                 );
-                $this->getEventDispatcher()->dispatch(AbstractMessageStrategy::EVENT_SUCCESS, $event);
             } else {
                 throw new \RuntimeException(
                     sprintf(
-                        'Could find URL to file on download page - %s',
+                        'Could not find URL to file on download page - %s',
                         json_encode(array('url' => $matches[0]))
                     )
                 );
