@@ -1,0 +1,5 @@
+/vendor
+*.sw*
+*~
+*.bak
+/composer.phar
