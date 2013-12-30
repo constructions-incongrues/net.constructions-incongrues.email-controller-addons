@@ -1,14 +1,14 @@
 {
     "name": "constructions-incongrues/email-controller-addons",
     "type": "library",
-    "description": "A modern and powerful inbound email processor",
+    "description": "Additional message strategies for aramisauto/email-controller.",
     "keywords": ["email", "sendspace", "email-controller"],
     "homepage": "https://github.com/constructions-incongrues/email-controller-addons",
     "license": "GPL-3.0+",
     "authors": [
         {
             "name": "Tristan Rivoallan",
-            "email": "tristan.rivoallan@aramisauto.com",
+            "email": "bertier@constructions-incongrues.net",
             "homepage": "http://github.com/trivoallan",
             "role": "Developer"
         }
