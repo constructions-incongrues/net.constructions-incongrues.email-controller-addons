@@ -3,7 +3,7 @@
     "type": "library",
     "description": "Additional message strategies for aramisauto/email-controller.",
     "keywords": ["email", "sendspace", "email-controller"],
-    "homepage": "https://github.com/constructions-incongrues/email-controller-addons",
+    "homepage": "https://github.com/constructions-incongrues/net.constructions-incongrues.email-controller-addons",
     "license": "GPL-3.0+",
     "authors": [
         {
