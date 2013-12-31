@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "211ada08b5a76534f3a5502fc8d4203f",
+    "hash": "e0cd8c83911619bca92b2cfb56a63c07",
     "packages": [
         {
             "name": "aramisauto/email-controller",
@@ -11,16 +11,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARAMISAUTO/email-controller.git",
-                "reference": "aa3431cc4d45bda8e21806ec16f6a7b449a0295f"
+                "reference": "86b166ea953ff323946231a82e5309db8dd7ff4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARAMISAUTO/email-controller/zipball/aa3431cc4d45bda8e21806ec16f6a7b449a0295f",
-                "reference": "aa3431cc4d45bda8e21806ec16f6a7b449a0295f",
+                "url": "https://api.github.com/repos/ARAMISAUTO/email-controller/zipball/86b166ea953ff323946231a82e5309db8dd7ff4c",
+                "reference": "86b166ea953ff323946231a82e5309db8dd7ff4c",
                 "shasum": ""
             },
             "require": {
-                "fabpot/goutte": "1.0.*@dev",
+                "php": ">=5.3.0",
                 "symfony/event-dispatcher": "2.4",
                 "symfony/expression-language": "2.4"
             },
@@ -51,7 +51,7 @@
                 "inbound",
                 "mandrill"
             ],
-            "time": "2013-12-30 19:22:19"
+            "time": "2013-12-31 17:35:35"
         },
         {
             "name": "fabpot/goutte",
@@ -673,9 +673,9 @@
         "aramisauto/email-controller": 20,
         "fabpot/goutte": 20
     },
-    "platform": [
-
-    ],
+    "platform": {
+        "php": ">=5.4.0"
+    },
     "platform-dev": [
 
     ]

@@ -33,7 +33,7 @@ class SendspaceMessageStrategy extends AbstractMessageStrategy
             }
             if (count($urls) > 0) {
                 $this->getEventDispatcher()->dispatch(
-                    AbstractMessageStrategy::EVENT_SUCCESS,
+                    $this->success(),
                     new FileHostingServiceEvent(
                         $this->getMessage(),
                         array('service' => 'sendspace.com', 'urls' => $urls)
@@ -49,7 +49,7 @@ class SendspaceMessageStrategy extends AbstractMessageStrategy
             }
         } catch (\Exception $e) {
             $event = new ErrorEvent($e->getMessage(), $e, array('message' => $this->getMessage()));
-            $this->getEventDispatcher()->dispatch(AbstractMessageStrategy::EVENT_ERROR, $event);
+            $this->getEventDispatcher()->dispatch($this->error(), $event);
         }
     }
 }
