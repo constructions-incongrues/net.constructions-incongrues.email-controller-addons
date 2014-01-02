@@ -10,8 +10,7 @@ class FileHostingServiceEvent extends MessageEvent
     {
         parent::__construct($message, $data);
         foreach (array('service', 'urls') as $key) {
-            if (!isset($data[$key]))
-            {
+            if (!isset($data[$key])) {
                 throw new \InvalidArgumentException(sprintf('Missing data key : %s', $key));
             }
         }
